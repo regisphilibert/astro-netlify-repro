@@ -1,0 +1,28 @@
+[build]
+  command = "npx astro build --site $URL"
+[build.environment]
+  NODE_VERSION = "18.12.0"
+[functions]
+  directory = "functions"
+  external_node_modules = ["svgo"]
+[context]
+
+[context.production]
+[context.production.environment]
+  GOES = "here"
+
+[context.deploy-preview]
+  command = "npx astro build --site $DEPLOY_PRIME_URL"
+
+[context.branch-deploy]
+  command = "npx astro build --site $DEPLOY_URL"
+[context.branch-deploy.environment]
+  GOES = "here"
+
+[dev]
+  command = "npm run start"
+  functions = "functions"
+  publish = "public"
+  port = 8888
+  targetPort = 3000
+  framework = "#custom"
