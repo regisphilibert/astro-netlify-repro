@@ -1,0 +1,19 @@
+---
+import site from "@data/site.js"
+import Base from "@layouts/Base.astro"
+import persons from "@data/persons.js"
+---
+
+<Base>
+	<div class="bg-light p-5 rounded mt-3">
+		<h1>{site.title}</h1>
+		<p class="lead">{site.description}</p>
+		<ul>
+			{persons.map(({first_name, last_name, id})=> (
+				<li>
+					<a href={`/person/${id}`}>{first_name} {last_name}</a>
+				</li>
+			))}
+		</ul>
+	</div>
+</Base>

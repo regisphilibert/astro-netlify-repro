@@ -1,0 +1,16 @@
+---
+export const prerender = false
+import Base from "@layouts/Base.astro"
+import persons from "@data/persons.js"
+const { id  } = Astro.params
+const entry = persons.find(p => p.id == id)
+const { first_name, last_name, email } = entry
+---
+
+
+<Base title={`${first_name} ${last_name}`}>
+	<div class="bg-light p-5 rounded mt-3">
+		<h1>{first_name} {last_name}</h1>
+		<p class="lead">{email}</p>
+	</div>
+</Base>
