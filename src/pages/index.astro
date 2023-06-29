@@ -3,7 +3,6 @@ import { getStaffMembers } from "@data/sanity/api"
 import site from "@data/site.js"
 import Base from "@layouts/Base.astro"
 import persons from "@data/persons.js"
-const entries = await getStaffMembers()
 ---
 
 <Base>
@@ -11,20 +10,11 @@ const entries = await getStaffMembers()
 		<h1>{site.title}</h1>
 		<p class="lead">{site.description}</p>
 
-		<h2>Local Data</h2>
+		<h2>Persons</h2>
 		<ul>
 			{persons.map(({first_name, last_name, id})=> (
 				<li>
 					<a href={`/person/${id}`}>{first_name} {last_name}</a>
-				</li>
-			))}
-		</ul>
-
-		<h2>Sanity Data</h2>
-		<ul>
-			{entries.map(({first_name, last_name, id})=> (
-				<li>
-					<a href={`/staff/${id}`}>{first_name} {last_name}</a>
 				</li>
 			))}
 		</ul>

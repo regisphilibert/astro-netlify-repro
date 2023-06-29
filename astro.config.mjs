@@ -6,10 +6,4 @@ import netlify from "@astrojs/netlify/functions";
 export default defineConfig({
   output: "hybrid",
   adapter: netlify(),
-  integrations: [
-    tailwind({
-      // Example: Provide a custom path to a Tailwind config file
-      configFile: './src/styles/config/tailwind.config.cjs',
-    }),
-  ]
 });

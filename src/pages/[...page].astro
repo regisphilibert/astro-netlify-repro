@@ -1,16 +1,26 @@
 ---
-import { getSingletons } from "@data/sanity/api"
 import Base from "@layouts/Base.astro";
 export const prerender = true;
 
 export async function getStaticPaths() {
-  const entries = await getSingletons()
+  const entries = [
+    {
+      title: "About",
+      slug: "about",
+      description: "This is about all we stand for"
+    },
+    {
+      title: "Contact",
+      slug: "contact",
+      description: "Reach us at here@there.com"
+    }
+  ]
 
   return entries.map(entry => {
     const slug = entry.slug
     return {
       params: {
-        singleton: slug
+        page: slug
       },
       props: {
         entry
@@ -18,11 +28,11 @@ export async function getStaticPaths() {
     }
   })
 }
-const { entry: { title, slug }} = Astro.props
+const { entry: { title, description }} = Astro.props
 ---
 <Base {title}>
   <div class="bg-light p-5 rounded mt-3">
     <h1>{title}</h1>
-    <p class="lead">{slug}</p>
+    <p class="lead">{description}</p>
   </div>
 </Base>
