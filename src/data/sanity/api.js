@@ -28,7 +28,7 @@ export async function getStaffMembers() {
     && _type == "person"
     && "staff" in associations
   ] | order(publishedAt desc)[]${STAFF_MEMBER}`;
-  const entries = await sanityFetch({query, hash: 'getStaff', forceCache: true });
+  const entries = await sanityFetch({query});
   return entries
 }
 
