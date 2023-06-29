@@ -1,0 +1,28 @@
+---
+import { getSingletons } from "@data/sanity/api"
+import Base from "@layouts/Base.astro";
+export const prerender = true;
+
+export async function getStaticPaths() {
+  const entries = await getSingletons()
+
+  return entries.map(entry => {
+    const slug = entry.slug
+    return {
+      params: {
+        singleton: slug
+      },
+      props: {
+        entry
+      }
+    }
+  })
+}
+const { entry: { title, slug }} = Astro.props
+---
+<Base {title}>
+  <div class="bg-light p-5 rounded mt-3">
+    <h1>{title}</h1>
+    <p class="lead">{slug}</p>
+  </div>
+</Base>

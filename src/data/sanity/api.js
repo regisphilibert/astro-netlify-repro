@@ -31,3 +31,20 @@ export async function getStaffMembers() {
   const entries = await sanityFetch({query, hash: 'getStaff', forceCache: true });
   return entries
 }
+
+export async function getSingletons() {
+  const params = {
+    types: [
+      'pageChairs',
+      'pageStaff',
+    ]
+  }
+  const query = groq`*[
+    !(_id in path('drafts.**'))
+    && _type in $types
+  ]{
+    title,
+    'slug': slug.current
+  }`
+  return await sanityFetch({query, params});
+}
