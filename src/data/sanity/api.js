@@ -8,7 +8,7 @@ const STAFF_MEMBER = groq`{
   last_name,
   'slug': slug.current,
   'type': _type,
-  'url': '/saff/' + _id,
+  'url': '/saff_member/' + _id,
   'section': "staff",
   'email': 'none@none.no'
 }`
