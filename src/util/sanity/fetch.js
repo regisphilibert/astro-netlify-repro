@@ -46,8 +46,6 @@ export default async function(params_input) {
   if(hash && forceCache){
     useCache = true
   }
-
-  useCache = false
   
   if(useCache) {
     return await cachedFetch(params_input)
